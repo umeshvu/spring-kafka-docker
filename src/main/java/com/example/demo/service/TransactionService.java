@@ -8,6 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Map;
 
 @Slf4j
@@ -37,5 +38,15 @@ public class TransactionService {
 
     public Map<String, Map<String, String>> getAllTransactions() {
         return jsonData;
+    }
+
+    public Map.Entry<String, Map<String, String>> getNextEntry() {
+        Iterator<Map.Entry<String, Map<String, String>>> iterator = jsonData.entrySet().iterator();
+        if (iterator.hasNext()) {
+            Map.Entry<String, Map<String, String>> entry = iterator.next();
+            iterator.remove(); // Remove from map after processing
+            return entry;
+        }
+        return null; // No more entries
     }
 }
