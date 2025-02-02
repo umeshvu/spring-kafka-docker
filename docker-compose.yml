@@ -1,7 +1,8 @@
-version: '3.8'
-app:
-  build:
-    context: .
-    dockerfile: Dockerfile
-  ports:
-    - "8080:8080"
+services:
+  app1:
+    image: file-reader-app:latest  # Replace with your built image name
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
