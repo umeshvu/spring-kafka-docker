@@ -1,0 +1,2 @@
+run below command in bin seeing live messages
+./kafka-console-consumer.sh --topic testFailedTransactions --from-beginning --bootstrap-server localhost:9092
