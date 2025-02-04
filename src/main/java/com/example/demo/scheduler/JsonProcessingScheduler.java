@@ -19,13 +19,13 @@ public class JsonProcessingScheduler {
         this.kafkaProducerService = kafkaProducerService;
     }
 
-    @Scheduled(fixedRate = 300)
+    @Scheduled(fixedRate = 1000)
     public void processNextEntry() {
         Map.Entry<String, Map<String, String>> entry = transactionService.getNextEntry();
 
         if (entry != null) {
             kafkaProducerService.sendMessage(entry.toString());
-            System.out.println("Processing entry: " + entry.getKey() + " => " + entry.getValue());
+//            System.out.println("Processing entry: " + entry.getKey() + " => " + entry.getValue());
         } else {
             System.out.println("No more entries to process.");
         }
